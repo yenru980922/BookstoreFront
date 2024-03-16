@@ -739,7 +739,7 @@ img {
     font-weight: 7;
     font-family: "Roboto";
     text-align: center;
-    text-decoration: underline !important;
+    /* text-decoration: underline !important; */
 }
 
 .btn-style-one:hover {
@@ -1888,6 +1888,9 @@ header.main-header.header-style-one.style-two {
     position: relative;
 }
 
+
+
+
 .banner-section .background-text {
     position: absolute;
     right: -280px;
@@ -2148,6 +2151,9 @@ header.main-header.header-style-one.style-two {
     -ms-transform: translateX(0px);
     transform: translateX(0px);
 }
+
+
+
 
 .banner-section .big-title {
     position: absolute;
@@ -7213,6 +7219,11 @@ section.section-thirty-four .video-btn a:hover {
 
 .sidebar .search-box {
 	position: relative;
+}
+
+.sidebar .search-box2 {
+	position: relative;
+    top:206px
 }
 
 .sidebar .search-box .form-group {

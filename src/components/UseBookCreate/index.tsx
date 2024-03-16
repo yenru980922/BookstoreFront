@@ -10,7 +10,7 @@ import '../../assets/css/responsive.css';
 import '../../assets/css/color.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faSearch,faCheck,faUser,faBook } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook } from '@fortawesome/free-brands-svg-icons'
 
 
@@ -63,17 +63,14 @@ const AddUsedBook: React.FC = () => {
   };
 
   return (
+    
     <div>
-
-    <div className="grid-line">
+<div className="grid-line">
         <span className="line-one"></span>
         <span className="line-two"></span>
         <span className="line-three"></span>
         <span className="line-four"></span>
-    </div>   
-
-
-
+    </div>
 
     {/* header */}
     <header className="main-header header-style-one style-two">
@@ -87,8 +84,9 @@ const AddUsedBook: React.FC = () => {
         </div>
         <div className="right-column box-style-two">
           <div className="login"><a href="#">Login</a></div>
-          <ul className="social-icon box-style-two">
-            <li><a href="#"><FontAwesomeIcon icon={faFacebook} /></a></li>
+          <ul className="social-icon box-style-two" >
+            
+            <li ><a href="#"><FontAwesomeIcon icon={faFacebook} style={{ fontSize: '20px' }} /></a></li>
             {/* Other social links */}
           </ul>
         </div>
@@ -96,8 +94,8 @@ const AddUsedBook: React.FC = () => {
     </div>
   </div>
   <div className="header-divider" style={{ height: '3px', backgroundColor: '#be9a78' }}></div>
-     
-     
+
+
         {/* <div className="header-upper">
             <div className="auto-container">
                 <div className="inner-container">
@@ -157,7 +155,7 @@ const AddUsedBook: React.FC = () => {
         </div> */}
       
 
-     
+
         <div className="sticky-header">
             <div className="header-upper">
                 <div className="auto-container">
@@ -201,19 +199,21 @@ const AddUsedBook: React.FC = () => {
     
 
       {/* 表單和書籍資訊 */}
+      
+      
 
-      <div className="big-title">Booking</div>
         <div className="check-availability">
         
         <div className="auto-container" >
         
         <div className='sidebar'>
-          <div className="sidebar-widget search-box ">
+          <div  className='search-box2' >
+          <div className="sidebar-widget search-box " style={{backgroundColor:"#ffff"}}>
 
                               <form  method="post" action="contact.html" onSubmit={handleIsbnSubmit} >
                                 
                                   <div className="form-group">
-                                  <input  placeholder='請輸入書籍ISBN碼' type="text" value={isbn} onChange={(e) => setIsbn(e.target.value)} />
+                                  <input style={{backgroundColor:"#F6F6F6"}} placeholder='請輸入書籍ISBN碼' type="text" value={isbn} onChange={(e) => setIsbn(e.target.value)} />
                                       {/* <input type="search" name="search-field" value="" placeholder="請輸入書籍ISBN碼" required=""/> */}
                                       <button type="submit" style={{
                                         display:'flex',
@@ -228,72 +228,60 @@ const AddUsedBook: React.FC = () => {
                               </form>
 
           </div>
-        </div>
-        </div>
-    </div>
-      <div className="container pt--80">
-        
+          </div>
           
-            {/* <form onSubmit={handleIsbnSubmit}>
-              <label>
-                ISBN:
-                <input type="text" value={isbn} onChange={(e) => setIsbn(e.target.value)} />
-              </label>
-              <button type="submit">搜尋書籍</button>
-            </form> */}
+        </div>
+        </div>
+        <section className="inside-section">
+          <div>
+        <div className="big-title noselect">Book</div>
+        </div>
+      </section>
+        </div>
+        
 
-            {isLoading ? <div>Loading...</div> : error ? <div>{"查無此書"}</div> : null}
+      <section className='section-one'>
+<div className="auto-container pt--80 ">
 
-            {data?.data && (
-              <>
-              <div className="">
-                    <div className="block-sixteen">
-                    <div className="sidebar-title"><h3>書籍資訊</h3></div>
-                    
-                    <div className="information">
-                            <div className="offer-title">{data.data.kind}</div>
-                            <div className="offer-title">Book information</div>
-                            <h4>{data.data.title}</h4>
-                            <div className="text">{data.data.description}</div>
-                            <div className="icon"><i className="flaticon-clock"></i><span>{data.data.authors?.join(', ') ?? '無'}</span></div>
-                            <div className="icon-two"><i className="flaticon-calendar-1"></i><span>{data.data.publisher}</span></div>
-                    </div>
-                        <form onSubmit={handleSubmit}>
-                        <label>
-                          上傳書況圖片：
-                          <input
-                            type="file"
-                            onChange={handleImageUpload}
-                          />
-                        </label>
-                        <label>
-                          定價：
-                          <input
-                            type="text"
-                            value={price}
-                            onChange={(e) => setPrice(e.target.value)}
-                          />
-                        </label>
-                        </form>
-                        <br/>
-                        <a href="contact.html" className=" btn-style-one"><span>確定送出</span></a>
-                    </div>
-                </div>
+      
 
-
-
-                {/* <div>
-                  <h2>書籍資訊</h2>
-                  <p>書名: {data.data.title}</p>
-                  <p>作者: {data.data.authors?.join(', ') ?? '無'}</p>
-                  {data.data.publisher && <p>出版社: {data.data.publisher}</p>}
-                </div> */}
-              </>
-            )}
-      </div>
-    
-    
+{/* 書籍資訊渲染區 */}
+{isLoading ? <div>Loading...</div> : error ? <div>查無此書</div> : (
+  <div style={{backgroundColor:'#F6F6F6'}}>
+  <div className="information">
+    {/* 書籍資訊 */}
+    <div className="sidebar-title"><h3>書籍資訊</h3></div>
+    <h4 style={{color:'#171717', fontFamily:'sans-serif'}}>{data?.data?.title || "書籍名稱"}</h4>
+    <hr/>
+    <div className="text">{data?.data?.description || "書籍描述"}</div>
+    <div className="icon"><FontAwesomeIcon icon={faUser} />&ensp;<span>{data?.data?.authors?.join(', ') || "書籍作者"}</span></div>
+    <div className="icon-two"><FontAwesomeIcon icon={faBook} />&ensp;<span>{data?.data?.publisher || "書籍出版社"}</span></div>
   </div>
+  </div>
+)}
+{/* 上傳表單 */}
+<form onSubmit={handleSubmit} style={{margin:'20px'}}>
+  <label>
+    上傳書況圖片：
+    <input type="file" onChange={handleImageUpload} />
+  </label>
+  <label>
+    定價：
+    <input type="text" value={price} onChange={(e) => setPrice(e.target.value)} />
+  </label>
+  <button type="submit" className="btn-style-one"><FontAwesomeIcon icon={faCheck} /> SEND OUT</button>
+</form>
+</div>
+
+</section>
+
+
+
+
+</div>
+
+
+
 
   );
 };
