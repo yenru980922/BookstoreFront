@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
-import AddUsedBook from './components/UseBookCreate/index.tsx'
+import AddUsedBook from './Pages/UseBookCreate/index.tsx'
 // import './index.css'
 import './assets/css/bootstrap.css';
 import './assets/css/style.css';
@@ -18,8 +18,7 @@ const queryClient = new QueryClient()
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-       <AddUsedBook />
+    <QueryClientProvider client={queryClient}>    
        <RouterProvider router={router} />
     </QueryClientProvider>
   </React.StrictMode>,

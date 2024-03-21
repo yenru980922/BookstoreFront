@@ -1,18 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import { useGetWeatherForecast } from './API'
-import { Outlet } from 'react-router-dom'
+// App.tsx
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import PublicLayout from './layouts/PublicLayout';
+import HomePage from './Pages/HomePage/HomePage';
+import AddUsedBook from './Pages/UseBookCreate/index';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App: React.FC = () => {
   return (
-    <>
-     
-    </>
-  )
-}
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<PublicLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path="usedbooks/create" element={<AddUsedBook />} />
+          
+        </Route>
+        
+      </Routes>
+    </BrowserRouter>
+  );
+};
 
-export default App
+export default App;

@@ -1,22 +1,18 @@
-import { createBrowserRouter } from "react-router-dom";
-import App from "./App";
-import UseBookCreate from "./components/UseBookCreate";
-import UseBookList from "./components/UseBookList";
+import { Route, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
+import HomePage from "./Pages/HomePage/HomePage"; 
+import AddUsedBook from "./Pages/UseBookCreate/index"; 
+import PublicLayout from "./layouts/PublicLayout";
+// import UsedBookList from "./Pages/UseBookList/index"; 
 
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<PublicLayout/>}>
+        <Route index element={<HomePage/> }/>
+        <Route path="/add-used-book" element={<AddUsedBook />}/>
+    </Route>
 
-const router = createBrowserRouter([
-  {
-    path: "/", //首頁
-    element: <App />,
-  },
-  {
-    path: "/used-books", 
-    element: <UseBookCreate />,
-  },
-  {
-    path: "/add-used-book", 
-    element: <UseBookList />,
-  },
-]);
+  )
+);
+
 
 export default router;
